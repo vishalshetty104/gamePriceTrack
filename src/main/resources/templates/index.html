@@ -9,12 +9,28 @@
 </head>
 <body>
 <h1>Game Price Tracker</h1>
-<form>
-    <div class="mb-3">
+<form th:action="@{/search}">
+    <div class="searchGameForm">
         <label for="gameName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="gameName" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="gameName" aria-describedby="emailHelp" th:name="gameName">
     </div>
-    <button type="submit" class="btn btn-primary" th:href="">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<table class="table table-striped">
+    <thead>
+        <tr class="table-dark">
+            <th>Name</th>
+            <th>Current Price</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="game:${games}">
+           <td><a th:inline="text" th:href="${game.getUrl()}">[[${game.gameTitle}]]</a></td>
+            <td th:text="${game.getCurrentPrice()}"></td>
+            <td th:text="${game.getPriceCut()}">%</td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>

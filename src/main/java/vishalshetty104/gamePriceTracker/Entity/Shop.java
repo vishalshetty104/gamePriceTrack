@@ -10,6 +10,14 @@ public class Shop {
     public String id;
     public String name;
 
+    public Shop() {
+    }
+
+    public Shop(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }

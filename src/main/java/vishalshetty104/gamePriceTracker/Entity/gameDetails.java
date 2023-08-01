@@ -48,6 +48,16 @@ public class gameDetails {
         return prices;
     }
 
+    public Double getCurrentPrice(){
+        return prices.get(0).price_new;
+    }
+    public Integer getPriceCut(){
+        return prices.get(0).price_cut;
+    }
+    public String getUrl(){
+        return prices.get(0).url;
+    }
+
     @Override
     public String toString() {
         return "gameDetails{" +

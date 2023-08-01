@@ -18,6 +18,18 @@ public class priceDetails {
     @Embedded
     public Shop shop;
 
+    public priceDetails() {
+    }
+
+    public priceDetails(Double price_new, Double price_old, int price_cut, String url, Shop shop, List<String> drm) {
+        this.price_new = price_new;
+        this.price_old = price_old;
+        this.price_cut = price_cut;
+        this.url = url;
+        this.shop = shop;
+        this.drm = drm;
+    }
+
     public Double getPrice_new() {
         return price_new;
     }
