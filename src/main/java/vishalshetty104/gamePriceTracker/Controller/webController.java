@@ -36,7 +36,8 @@ public class webController {
         //String name = "cyberpunk 2077";
         ModelAndView mv = new ModelAndView("search");
         gameDetails game = gameAPIClient.getGameDetails(name);
-        mv.addObject("url",game.getUrl());
+        mv.addObject("prices",game.getPrices());
+        mv.addObject("url", gameAPIClient.generateSteamPicUrl(game));
         mv.addObject("game",game);
         return mv;
 

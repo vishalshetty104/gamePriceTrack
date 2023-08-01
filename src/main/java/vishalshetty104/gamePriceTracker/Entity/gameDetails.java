@@ -51,13 +51,21 @@ public class gameDetails {
     public Double getCurrentPrice(){
         return prices.get(0).price_new;
     }
+
     public Integer getPriceCut(){
         return prices.get(0).price_cut;
     }
     public String getUrl(){
         return prices.get(0).url;
     }
-
+    public String getSteamUrl(){
+        for(int i=0;i<prices.size();i++){
+            if(prices.get(i).url.contains("store.steampowered.com")){
+                return prices.get(i).url;
+            }
+        }
+        return "";
+    }
     @Override
     public String toString() {
         return "gameDetails{" +

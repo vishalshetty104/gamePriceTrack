@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 
+import java.text.DecimalFormat;
 import java.util.List;
+
 
 
 @Embeddable
@@ -28,14 +30,19 @@ public class priceDetails {
         this.url = url;
         this.shop = shop;
         this.drm = drm;
+
+    }
+    public Double formatNumber(Double price){
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        return Double.valueOf(decimalFormat.format(price*82.33));
     }
 
     public Double getPrice_new() {
-        return price_new;
+        return formatNumber(price_new);
     }
 
     public Double getPrice_old() {
-        return price_old;
+        return formatNumber(price_old);
     }
 
     public int getPrice_cut() {

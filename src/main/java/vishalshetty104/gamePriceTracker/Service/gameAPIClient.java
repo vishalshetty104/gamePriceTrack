@@ -15,6 +15,8 @@ import vishalshetty104.gamePriceTracker.Repository.gameRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class gameAPIClient {
@@ -30,7 +32,7 @@ public class gameAPIClient {
         Long id = details.get("id").asLong();
         String plain = details.get("plain").asText();
         String title = details.get("title").asText();
-        String priceUrl = "https://api.isthereanydeal.com/v01/game/prices/?key=665d5c5e9bbe2ddf928bcd5ad2ac14cb7ab53b75&plains="+plain+"&region=us&country=IN&shops=steam,gog&exclude=voidu%2Citchio&added=0";
+        String priceUrl = "https://api.isthereanydeal.com/v01/game/prices/?key=665d5c5e9bbe2ddf928bcd5ad2ac14cb7ab53b75&plains="+plain+"&region=us&country=IN&exclude=voidu%2Citchio&added=0";
         String priceData = restTemplate.getForObject(priceUrl,String.class);
 
         JsonNode priceNode = om.readTree(priceData);
@@ -67,5 +69,15 @@ public class gameAPIClient {
             gameList.add(tempGame);
         }
         return gameList;
+    }
+    public String generateSteamPicUrl(gameDetails game){ //generates URL to access game image from steam website
+        String steamUrl = game.getSteamUrl();
+        String regex = "/app/(\\d+)/";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(steamUrl);
+        if(matcher.find()){
+            return "https://cdn.akamai.steamstatic.com/steam/apps/"+matcher.group(1)+"/header.jpg?";
+        }
+        return "https://steam.com";
     }
 }
