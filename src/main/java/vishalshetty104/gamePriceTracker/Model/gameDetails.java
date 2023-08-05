@@ -1,8 +1,6 @@
-package vishalshetty104.gamePriceTracker.Entity;
+package vishalshetty104.gamePriceTracker.Model;
 
-import io.hypersistence.utils.hibernate.type.array.ListArrayType;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +47,7 @@ public class gameDetails {
     }
 
     public Double getCurrentPrice(){
-        return prices.get(0).price_new;
+        return prices.get(0).formatNumber(prices.get(0).price_new);
     }
 
     public Integer getPriceCut(){
@@ -72,7 +70,7 @@ public class gameDetails {
                 "id=" + id +
                 ", gameTitle='" + gameTitle + '\'' +
                 ", plain='" + plain + '\'' +
-                ", prices=" + prices.get(0).getPrice_new() +
+                ", prices=" + prices.toString() +
                 '}';
     }
 }

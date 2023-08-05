@@ -2,7 +2,7 @@ package vishalshetty104.gamePriceTracker.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vishalshetty104.gamePriceTracker.Entity.gameDetails;
+import vishalshetty104.gamePriceTracker.Model.gameDetails;
 import vishalshetty104.gamePriceTracker.Repository.gameRepository;
 
 import java.util.List;

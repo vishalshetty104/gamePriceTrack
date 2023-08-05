@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import vishalshetty104.gamePriceTracker.Entity.Shop;
-import vishalshetty104.gamePriceTracker.Entity.gameDetails;
-import vishalshetty104.gamePriceTracker.Entity.priceDetails;
+import vishalshetty104.gamePriceTracker.Model.Shop;
+import vishalshetty104.gamePriceTracker.Model.gameDetails;
+import vishalshetty104.gamePriceTracker.Model.priceDetails;
 import vishalshetty104.gamePriceTracker.Repository.gameRepository;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class gameAPIClient {
+public class gameAPIService {
     @Autowired
     gameRepository repository;
     RestTemplate restTemplate = new RestTemplate();

@@ -1,8 +1,6 @@
-package vishalshetty104.gamePriceTracker.Entity;
+package vishalshetty104.gamePriceTracker.Model;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 @Embeddable
 public class Shop {

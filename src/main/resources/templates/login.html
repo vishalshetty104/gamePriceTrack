@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+<form th:action="@{/login}" method="post" th:object="${user}">
+  <div class="form-group">
+    <label class="control-label" for="firstName"> Username </label>
+    <input id="firstName" class="form-control" th:field="*{username}"
+           required autofocus="autofocus" />
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="password"> Password </label> <input
+          id="password" class="form-control" type="password"
+          th:field="*{password}" required autofocus="autofocus" />
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Login</button>
+    <span>New User? <a href="/" th:href="@{/register}">Register</a></span>
+  </div>
+</form>
+</body>
+</html>

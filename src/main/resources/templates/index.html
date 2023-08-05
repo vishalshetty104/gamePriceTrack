@@ -5,30 +5,34 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
 </head>
 <body>
-<h1>Game Price Tracker</h1>
-<form th:action="@{/search}">
+<div>
+    <h1 style="text-align: center;font-family:audiowide;">Game Price Tracker</h1>
+    <a class="btn btn-primary" style="margin-top: -4.5%;margin-left: 0.5%;" th:href="@{/wishlist}">Wishlist</a>
+</div>
+
+<form th:action="@{/search}" style="width: 50%;margin-left: 25%;" >
     <div class="searchGameForm">
         <label for="gameName" class="form-label">Name</label>
         <input type="text" class="form-control" id="gameName" aria-describedby="emailHelp" th:name="gameName">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 45%;margin-top: 1%;">Search</button>
 </form>
-<table class="table table-striped">
+<table class="table table-striped" style="margin-top: 1%;width: 80%;margin-left: 12.5%;">
     <thead>
         <tr class="table-dark">
             <th>Name</th>
             <th>Current Price</th>
-            <th>Discount</th>
+            <th>Discount(%)</th>
         </tr>
     </thead>
     <tbody>
         <tr th:each="game:${games}">
-           <td><a th:inline="text" th:href="${game.getUrl()}">[[${game.gameTitle}]]</a></td>
+           <td><a th:inline="text" th:href="@{/search?gameName={gameTitle}(gameTitle=${game.gameTitle})}">[[${game.gameTitle}]]</a></td>
             <td th:text="${game.getCurrentPrice()}"></td>
-            <td th:text="${game.getPriceCut()}">%</td>
+            <td th:text="${game.getPriceCut()}"></td>
         </tr>
     </tbody>
 </table>

@@ -1,8 +1,5 @@
-package vishalshetty104.gamePriceTracker.Entity;
+package vishalshetty104.gamePriceTracker.Model;
 
-import com.fasterxml.jackson.annotation.JsonKey;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 
@@ -34,7 +31,7 @@ public class priceDetails {
     }
     public Double formatNumber(Double price){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        return Double.valueOf(decimalFormat.format(price*82.33));
+        return Double.valueOf(decimalFormat.format(price*52));
     }
 
     public Double getPrice_new() {
